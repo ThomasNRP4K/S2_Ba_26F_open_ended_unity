@@ -12,8 +12,10 @@ config:
 classDiagram
 
 	class InputManager{
+		<<MonoBehaviour>>
 		+Player player
 		+HandleMovement()
+		+HandleLook()
 		+HandleJump()
 		+HandleAttack()
 	}
@@ -28,7 +30,7 @@ classDiagram
 
 
 	%% Connections
-	PlayerController *-- Player: Contains
+	InputManager --* Player: Contains/Owns
 
 
 	%% notes
