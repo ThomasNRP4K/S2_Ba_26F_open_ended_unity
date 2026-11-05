@@ -20,6 +20,7 @@ classDiagram
 		+HandleAttack()
 	}
 
+	note for Player "Player functions are called <br> by  Input Manager"
 	class Player{
 		<<MonoBehaviour>>
 		+speed: float
