@@ -20,7 +20,7 @@ classDiagram
 		+HandleAttack()
 	}
 
-	note for Player "Player functions are called <br> by  Input Manager"
+	note for Player "Player functions are called <br> by Input Manager"
 	class Player{
 		<<MonoBehaviour>>
 		+speed: float
@@ -34,8 +34,6 @@ classDiagram
 	InputManager --* Player: Contains/Owns
 
 
-	%% notes
-	note "Note"
 
 
 
