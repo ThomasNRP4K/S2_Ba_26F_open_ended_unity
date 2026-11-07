@@ -1,30 +1,47 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputManager : MonoBehaviour
+public static class InputManager 
 {
-    PlayerController playerController;
+    static PlayerController playerController;
 
-    public Player player;
+    public static Player player;
 
 
-    void Start()
+    public static void Initialize(Player _player)
     {
+        player = _player;
         playerController = new PlayerController();
         playerController.Gameplay.Enable();
         playerController.Gameplay.Move.performed += HandleMovement;
+        playerController.Gameplay.Move.canceled += HandleMovement;
+        //2026-11-12 planned code to be added on student side
         playerController.Gameplay.Look.performed += HandleLook;
+        playerController.Gameplay.Jump.performed += HandleJump;
+        //----------------------------------
     }
 
-    private void HandleMovement(InputAction.CallbackContext ctx)
+    private static void HandleMovement(InputAction.CallbackContext context)
     {
-        player.Move(ctx.ReadValue<Vector2>());
+        player.Move(context.ReadValue<Vector2>());
     }
 
-    private void HandleLook(InputAction.CallbackContext ctx)
+
+    //2026-11-12 planned code to be added on student side
+    private static void HandleLook(InputAction.CallbackContext context)
     {
-        player.Rotate(ctx.ReadValue<Vector2>().normalized * 2);
+        player.Rotate(context.ReadValue<Vector2>().normalized * 2);
     }
+
+    private static void HandleJump(InputAction.CallbackContext context)
+    {
+        player.Jump();
+    }
+
+
+
+    //---------------------------
 
 
 

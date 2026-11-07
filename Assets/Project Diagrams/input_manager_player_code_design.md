@@ -12,12 +12,12 @@ config:
 classDiagram
 
 	class InputManager{
-		<<MonoBehaviour>>
-		+Player player
-		+HandleMovement()
-		+HandleLook()
-		+HandleJump()
-		+HandleAttack()
+
+		+static player: Player
+		+static Initialize(_player: Player)
+		+static HandleMovement()
+		+static HandleLook()
+		+static HandleJump()
 	}
 
 	note for Player "Player functions are called <br> by Input Manager"
@@ -25,8 +25,14 @@ classDiagram
 		<<MonoBehaviour>>
 		+speed: float
 		+moveDirection : Vector2
-		+Move(Vector2 inputDirection)
+		+Awake()
+		+Start()
+		+Update()
+		+Move(inputDirection: Vector2)
+		+Rotate(rotateAmount: Vector2)
 		+Jump()
+		+Fall()
+
 	}
 
 
